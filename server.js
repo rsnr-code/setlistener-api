@@ -9,7 +9,10 @@ require("dotenv").config(".env");
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname + "/public")));
+app.get('/', function (req, res)
+{
+    res.render('index.html');
+});
 
 app.get("/setlist", (req, res) => {
   const artist = req.query.artistName;
