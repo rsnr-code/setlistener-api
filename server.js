@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const path = require("path");
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -9,10 +10,6 @@ require("dotenv").config(".env");
 
 app.use(cors());
 
-app.get('/', function (req, res)
-{
-    res.render('index.html');
-});
 
 app.get("/setlist", (req, res) => {
   const artist = req.query.artistName;
@@ -36,8 +33,6 @@ app.get("/setlist", (req, res) => {
       console.error(err);
     });
 });
-
-const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT ${PORT}`);
